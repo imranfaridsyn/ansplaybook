@@ -1,0 +1,18 @@
+- name: Capture uptime
+  hosts: web
+  tasks:
+    - name: Capture uptime
+      command: uptime -p
+      register: uptime_output
+
+    - name: Create File
+      file:
+        path: /home/imran/uptime.txt
+        state: touch
+        mode: '0644'
+
+    - name: Write uptime to file
+      lineinfile:
+        path: /home/imran/uptime.txt
+        line: "{{ uptime_output.stdout }}"
+        create: yes

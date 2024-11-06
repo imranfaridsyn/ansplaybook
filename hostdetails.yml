@@ -1,6 +1,0 @@
-- name: Add file with system information
-  hosts: Centos7
-  tasks:
-    - name: Create a file with hostname, uptime, and kernel version
-      ansible.builtin.command: "echo 'Hostname: $(hostname)' > /home/imran/system_info.txt && echo 'Uptime: $(uptime -p)' >> /home/imran/system_info.txt && echo 'Kernel Version: $(uname -r)' >> /home/imran/system_info.txt"
-      become: yes
